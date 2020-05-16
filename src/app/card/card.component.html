@@ -1,0 +1,64 @@
+<div class="card">
+    <!-- <h2 [ngStyle]="{
+        color: title.length < 5 ? 'blue' : 'red',
+        fontWeight: title.length < 7 ? 'normal' : 'bold'
+    }">{{ title }}</h2> -->
+
+    <h2 [ngStyle]="{
+        color: card.title.length < 5 ? 'blue' : 'red',
+        fontWeight: card.title.length < 7 ? 'normal' : 'bold'
+    }">{{ index }} {{ card.title }}</h2>
+
+    <!-- <p class="text" [ngClass]="{
+        blue: textColor === 'blue',
+        green: textColor === 'green',
+        red: textColor === 'red'
+    }">{{ text }}</p> -->
+
+    <p 
+        class="text" 
+        [class.blue]="textColor === 'blue'"
+        [class.green]="textColor === 'green'"
+        [class.red]="textColor === 'red'"
+        >{{ card.text }}</p>
+
+    <!-- <p>{{ getInfo() }}</p> -->
+    <!-- <strong>Number: {{ number }}</strong>
+    <em>{{ array }}</em>
+    <div>{{ obj.info.job }}</div>
+    <pre>{{ obj | json }}</pre> -->
+    <!-- <div>
+        <img src="{{ imgUrl }}">
+    </div> -->
+
+    <!-- binding []-->
+    <!-- <div>
+        <img [src]="imgUrl">
+        <br>
+        <button [disabled]='disabled'>Enable</button>
+    </div> -->
+
+    <div class="buttons">
+        <button (click)="changeTitle()">Change title</button>
+        <button (click)="card.title = 'Inline title'">Change title inline</button>
+    </div>
+
+    <div class="buttons">
+        <button (click)="textColor = 'blue'">Set Blue</button>
+        <button (click)="textColor = 'green'">Set Green</button>
+        <button (click)="textColor = 'red'">Set Red</button>
+    </div>
+
+    <div>
+        <strong>{{ cardDate | date:'MMMM dd HH:mm:ss':null:'ru-RU' }}</strong>
+    </div>
+
+    <!-- <div> -->
+        <!-- <input type="text" (input)='inputHandler($event)' [value]="title"> -->
+        <!-- <input type="text" #myInput (input)='inputHandler(myInput.value)' [value]="title">
+    </div> -->
+
+    <div>
+        <input type="text" [(ngModel)]="card.title" (ngModelChange)="changeHandler()">
+    </div>
+</div>
